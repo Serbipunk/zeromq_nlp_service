@@ -1,8 +1,6 @@
 # a NLP service powered by ZEROMQ
 
-Since most NLP program has to load tons of math model, it's better to be set as an NLP service, indepence of web-server program. 
-
-On the other hand, another service, like asynchronous HTTP-web-server, should coorperate with the NLP service and give real client what he needs.
+most NLP program has to load tons of math model. It's a good choice to set NLP program independency of web-server-infrastructure.
 
 We compare the C++ NLP module as the **Worker** and compare the Python control module as the **Leader**. The **Leader** arrange the **Worker** to do his job, and collect his achievement.
 
