@@ -9,7 +9,7 @@ The process loop between **Leader** and **Worker** is synchronous.
 
 -----------
 
-## dependency:
+## dependency
 
 * protobuf and python-protobuf
 
