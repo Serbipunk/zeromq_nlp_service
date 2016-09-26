@@ -25,7 +25,8 @@ int main () {
 
     CateTeller ct;
  
-    while(true) {
+    while(true) {		// that's the reason of why this server program is synchronous
+
         //// get Request from Python Client
         zmq::message_t request;
         //  Wait for next request from client
