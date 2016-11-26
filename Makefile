@@ -17,13 +17,15 @@ PROTOBUF_LIB=-L/usr/local/lib -lprotobuf -pthread
 MKDIR_P=mkdir -p
 .PHONY: directories
 
-all: directories $(BIN_DIR)/nlp_service_main Worker Leader
+all: directories $(BIN_DIR)/nlp_service_main Worker Leader Leader_async
 
 MSGmodule: $(BUILD_DIR)/titlebook.pb.o $(BUILD_DIR)/cppMSGmodule.o
 
 Worker: $(BIN_DIR)/Worker
 
-Leader: $(BIN_DIR)/Leader.py $(BUILD_DIR)/pyMSGmodule.py $(BUILD_DIR)/titlebook_pb2.py
+Leader: $(BIN_DIR)/Leader_synchronous.py $(BUILD_DIR)/pyMSGmodule.py $(BUILD_DIR)/titlebook_pb2.py
+
+Leader_async: $(BIN_DIR)/Leader_asynchronous.py $(BIN_DIR)/Secretary_asynchronous.py
 
 directories: $(BUILD_DIR)
 
@@ -58,10 +60,16 @@ $(BUILD_DIR)/cppMSGmodule.o: $(SRC)/cppMSGmodule.cpp
 $(BIN_DIR)/Worker: $(TOOL_SRC)/Worker.cpp $(BUILD_DIR)/titlebook.pb.o $(BUILD_DIR)/cppMSGmodule.o $(BUILD_DIR)/combinition.o $(BUILD_DIR)/libClassifier.o $(BUILD_DIR)/sqlite3.o $(BUILD_DIR)/TC_process.o
 	$(CXX) $^ $(CFLAGS) $(ZMQ_INCLUDE) $(ZMQ_LIB) $(PROTOBUF_LIB) $(LDFLAGS) -o $@
 
-$(BIN_DIR)/Leader.py: $(PYSCRIPT)/Leader.py
+$(BIN_DIR)/Leader_synchronous.py: $(PYSCRIPT)/Leader_synchronous.py
 	cp $^ $@
 
 $(BUILD_DIR)/pyMSGmodule.py: $(PYSCRIPT)/pyMSGmodule.py
+	cp $^ $@
+
+$(BIN_DIR)/Leader_asynchronous.py: $(PYSCRIPT)/Leader_asynchronous.py
+	cp $^ $@
+
+$(BIN_DIR)/Secretary_asynchronous.py: $(PYSCRIPT)/Secretary_asynchronous.py
 	cp $^ $@
 
 $(BUILD_DIR)/titlebook_pb2.py: $(PYSCRIPT)/titlebook_pb2.py
