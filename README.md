@@ -17,14 +17,24 @@ The process loop between **Leader** and **Worker** is synchronous.
 
 -----------
 
-## how to use
+## deploy this service
 
-when you finish making all.
+All the shells should be run at $(zeromq_nlp_service) directory.
 
-#### ./build/bin/Worker
+### 1. start Worker service
 
-will open NLP Worker service.
+  ./build/bin/Worker
 
-#### python ./build/bin/Leader.py
+### 2. run synchronized Leader script
 
-will make Worker work for you and get worker's achievement.
+  python ./build/bin/Leader_synchronous.py
+  
+### 3. run asynchronized Leader script
+
+#### 3.1 Secretary service should be deployed at first.
+
+  python build/bin/Secretary_asynchronous.py
+  
+#### 3.2 run asynchronized Leader script
+
+  python build/bin/Leader_asynchronous.py
