@@ -1,0 +1,9 @@
+package tutorial;
+
+message TitleList {
+	repeated string title = 1;
+}
+
+message IdList {
+	repeated int32 id = 1;
+}
