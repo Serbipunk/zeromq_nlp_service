@@ -6,6 +6,8 @@ We compare the C++ NLP module as the **Worker** and compare the Python control m
 
 The process loop between **Leader** and **Worker** is synchronous.
 
+But you can use Secretary assistant-python-script to accomplish the *asynchronous* calling of Worker.
+
 
 -----------
 

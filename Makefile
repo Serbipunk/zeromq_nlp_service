@@ -75,5 +75,16 @@ $(BIN_DIR)/Secretary_asynchronous.py: $(PYSCRIPT)/Secretary_asynchronous.py
 $(BUILD_DIR)/titlebook_pb2.py: $(PYSCRIPT)/titlebook_pb2.py
 	cp $^ $@
 
+$(SRC)/titlebook.pb.cc: $(SRC)/titlebook.proto
+	cp $(SRC)/titlebook.proto ./
+	protoc titlebook.proto --cpp_out=./$(SRC)
+	mv $(SRC)/titlebook.pb.h $(INCLUDE)
+	protoc titlebook.proto --python_out=./
+	mv titlebook_pb2.py $(PYSCRIPT)
+	rm -f titlebook.proto
+
 clean:
 	rm -rf build
+	rm -f $(SRC)/titlebook.pb.h
+	rm -f $(SRC)/titlebook.pb.cc
+	rm -f $(PYSCRIPT)/titlebook_pb2.py
