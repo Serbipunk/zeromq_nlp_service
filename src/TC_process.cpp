@@ -742,7 +742,7 @@ void CateTeller::tell(char ** p_text, int n_text, int * p_labels) {
 		char message_t[50];
 		//sprintf(message_t, "\rquerying no.%d", iSen+1);
 		sprintf(message_t, "\r�����%d��", iSen+1);
-		std::cout << message_t;
+		// std::cout << message_t;
 
 		for( int iWord = 0; iWord < (*v_lines_words.at(iSen)).size(); iWord++ )	//ÿ����10����
 		{
