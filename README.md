@@ -1,12 +1,10 @@
 # a NLP service powered by ZEROMQ
 
-most NLP program has to load tons of math model. It's a good choice to set NLP program independent from web-service-infrastructure.
+NLP programs have to load tons of math models. It's a good choice to separate NLP program from web-service-infrastructure.
 
-We compare the C++ NLP module as the **Worker** and compare the Python control module as the **Leader**. The **Leader** arrange the **Worker** to do his job, and collect his achievement.
+We compare the C++ NLP module as the **Worker** to the Python control module as the **Leader**. The **Leader** arranges for the **Worker** to do its job and collects its achievement.
 
-The process loop between **Leader** and **Worker** is synchronous.
-
-But you can use Secretary assistant-python-script to accomplish the *asynchronous* calling of Worker.
+While the process loop between **Leader** and **Worker** is synchronous, you can use Secretary assistant-python-script for making *asynchronous* calls to Worker.
 
 
 -----------
@@ -21,7 +19,7 @@ But you can use Secretary assistant-python-script to accomplish the *asynchronou
 
 ## deploy this service
 
-All the shells should be run at $(zeromq_nlp_service) directory.
+All shells should be run at $(zeromq_nlp_service) directory.
 
 ### 1. start Worker service
 
