@@ -25,18 +25,26 @@ All the shells should be run at $(zeromq_nlp_service) directory.
 
 ### 1. start Worker service
 
-  ./build/bin/Worker
+```
+./build/bin/Worker
+```
 
 ### 2. run synchronized Leader script
 
-  python ./build/bin/Leader_synchronous.py
+```
+python ./build/bin/Leader_synchronous.py
+```
   
 ### 3. run asynchronized Leader script
 
 #### 3.1 Secretary service should be deployed at first.
 
-  python build/bin/Secretary_asynchronous.py
+```
+python build/bin/Secretary_asynchronous.py
+```
   
 #### 3.2 run asynchronized Leader script
 
-  python build/bin/Leader_asynchronous.py
+```
+python build/bin/Leader_asynchronous.py
+```
